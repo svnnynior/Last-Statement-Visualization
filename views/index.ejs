@@ -16,8 +16,11 @@
   </head>
   <body>
     <div class="container" style="top:13em;position:relative;">
+      <!-- Page 1 -->
       <h1 class="text-center" style="font-family:'Caveat';font-size:120px;font-weight:700">The <%= title %></h1>
       <h1 class="text-center" style="font-family:'Caveat';font-size:30px;">What would you say, giving it'd be your last words ?</h1>
+      
+      <!-- Page 2 -->
       <div class="container" style="top:40em;position:relative;">
         <div class="row">
           <div class="col-sm-2">
@@ -25,7 +28,7 @@
           <div class="col-sm-8">
             <p style="text-align:justify;">
               &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<em>Death </em>penalty has been one of the controversial human rights issues in every places around the world.
-              This is a visualization of dataset <b>"Last Words of Death Row Inmates"</b> from <a href="http://www.kaggle.com">Kaggle.com</a>
+              This is a visualization of the dataset <b>"Last Words of Death Row Inmates"</b> from <a href="http://www.kaggle.com">Kaggle.com</a>.
               The dataset includes information on criminals executed by Texas Department of Criminal Justice from 1982 to November 8th, 2017. 
               Some of the statements are as follows:
             </p>
@@ -67,13 +70,15 @@
           <div class="col-sm-2">
           </div>
         </div>
+
+        <!-- Page 3 -->
         <div class="container" style="top:45em;position:relative;">
           <div class="row">
             <div class="col-sm-1">
             </div>
             <div class="col-sm-9">
               <p style="text-align:justify;font-size:22px;">
-                <span>First ...</span> &nbsp;&nbsp;here are some basic statistics 
+                first, some basic statistics ..
               </p>
             </div>
             <div class="col-sm-1">
@@ -82,42 +87,108 @@
         </div>
         <div class="container" style="top:50em;position:relative;">
           <div class="row justify-content-md-center">
-            <div class="col">
+            <div class="col-3 text-center" id="counter">
+              <span class="counter-value" data-count="545"></span>
+              <p>Offenders</p>
             </div>
-            <div class="col-md-auto">
-              Variable width content
+            <div class="col-3 text-center" id="counter">
+              <span class="counter-value" data-count="28.4"></span>
+              <p>Average Age</p>
             </div>
-            <div class="col-md-auto">
-              Variable width content
-            </div>
-            <div class="col">
+            <div class="col-3 text-center" id="counter">
+              <span class="counter-value" data-count="10"></span>
+              <p>Average Education Level</p>
             </div>
           </div>
-          <div class="row">
-            <div class="col-sm-4">
-              <div class="text-center">
-                Graph
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="text-center">
-                Graph
-              </div>
-            </div>
-            <div class="col-sm-4">
-              <div class="text-center">
-                Graph
-              </div>
+          <div class="row justify-content-md-center" style="top:6em;position:relative;">
+            <div class="col-md-auto text-center" id="counter">
+              <span class="counter-value" data-count="735" style="font-size:120px"></span>
+              <p style="top:0.7em;position:relative;font-size:30px"><b>Victims</b></p>
             </div>
           </div>
         </div>
 
+        <!-- Page 4 -->
+        <div class="container" style="top:80em;position:relative;">
+          <div class="row">
+            <div class="col-sm-1">
+            </div>
+            <div class="col-sm-9">
+              <p style="text-align:justify;font-size:22px;">
+                see any relation ?
+              </p>
+            </div>
+            <div class="col-sm-1">
+            </div>
+          </div>
+        </div>
+
+        <!-- Page 5 -->
+        <div class="container" style="top:80em;position:relative;">
+            <div class="row">
+              <div class="col-sm-1">
+              </div>
+              <div class="col-sm-9">
+                <p style="text-align:justify;font-size:22px;">
+                  <!-- map -->
+                </p>
+              </div>
+              <div class="col-sm-1">
+              </div>
+            </div>
+          </div>
+          <div class="container" style="top:100em;position:relative;">
+            <div class="row justify-content-md-center">
+              <div id="map-container">
+              </div>
+            </div>
+          </div>
+        
+
+      
+
     <!-- Optional JavaScript -->
-    <!-- D3 -->
+    <!-- D3 Library -->
     <script src="https://d3js.org/d3.v4.min.js"></script>
+    <script src="https://d3js.org/topojson.v2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3-tip/0.7.1/d3-tip.min.js"></script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <!-- jQuery Code -->
+    <script>
+      var isPassed = 0;
+      $(window).scroll(function() {
+        var oTop = $('#counter').offset().top - window.innerHeight;
+        if (isPassed == 0 && $(window).scrollTop() > oTop) {
+          $('.counter-value').each(function() {
+            var $this = $(this),
+              countTo = $this.attr('data-count')
+            $({
+              countNum: $this.text()
+            }).animate({
+                countNum: countTo
+              },
+              {
+                duration: 3500,
+                easing: 'swing',
+                step: function() {
+                  $this.text(Math.floor(this.countNum));
+                },
+                complete: function() {
+                  $this.text(this.countNum);
+                }
+              })
+          })
+          isPassed = 1
+        }
+
+      })
+    </script>
+    <!-- D3 Code -->
+    <script src="/javascripts/map.js"></script>
   </body>
+
 </html>
