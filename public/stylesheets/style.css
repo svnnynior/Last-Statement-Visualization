@@ -88,11 +88,12 @@ article{
 
 .states {
   /* fill: black; */
-  fill: #e4e4e4c2;
+  fill: red;
+  /* stroke: #daeff5c2; */
 }
 
 .states :hover {
-  fill: #b9b9b9c2;  
+  fill: #55d3b4e1!important;  
   /* fill: red; */
 
 
@@ -100,25 +101,90 @@ article{
 
 .state-borders {
   fill: none;
-  stroke: #fff;
+  stroke: #c3e3ebc2;
   stroke-width: 0.5px;
   stroke-linejoin: round;
   stroke-linecap: round;
   pointer-events: none;
 }
 
+#legend {
+  position: absolute;
+  left: 30px;
+  top: 20px;
+}
+
+#legend .legend-title {
+  margin-bottom: 4px;
+  font-weight: bold;
+}
+
+#legend .legend-item {
+  margin-bottom: 4px;
+  font-size: .8em;
+}
+
+#legend .legend-swatch,
+#legend .legend-value {
+  display: inline-block;
+  vertical-align: bottom;
+}
+
+#legend .legend-swatch {
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+}
 
 /* Tooltip CSS */
 div.tooltip {
   position: absolute;
   text-align: center;
-  width: 160px;
+  width: 150px;
   height: 60px;
   padding: 2px;
   font-size: 10px;
-  background: white;
+  opacity: 1;
+  background: #fbffff;
   border: 0px;
   border-radius: 3px;
   pointer-events: none;
 }
 
+div.legendtip {
+  position: absolute;
+  text-align: center;
+  color: white;
+  width: 150px;
+  height: 35px;
+  padding: 2px;
+  font-size: 10px;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.8);
+  border: 0px;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+div.infotip {
+  position: absolute;
+  text-align: center;
+  color: white;
+  width: 150px;
+  height: 35px;
+  padding: 2px;
+  font-size: 10px;
+  opacity: 1;
+  background: rgba(0, 0, 0, 0.8);
+  border: 0px;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.axis--x path {
+  display: none;
+}
+
+.bars:hover{
+  opacity: 0.6;
+}

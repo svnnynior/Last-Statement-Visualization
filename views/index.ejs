@@ -11,6 +11,9 @@
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Cagliostro|Caveat:700,400|Kanit:300" rel="stylesheet">
 
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css" integrity="sha384-3AB7yXWz4OeoZcPbieVW64vVXEwADiYyAEhwilzWsLw+9FgqpyjjStpPnpBO8o8S" crossorigin="anonymous">
+
     <title><%= title %></title>
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
@@ -115,25 +118,79 @@
             </div>
             <div class="col-sm-9">
               <p style="text-align:justify;font-size:22px;">
-                see any relation ?
+                <!-- see any relation ? -->
+                does race matter ? 
               </p>
             </div>
             <div class="col-sm-1">
             </div>
           </div>
         </div>
+        <div class="container" style="top:80em;position:relative;">
+          <div class="row justify-content-md-center" style="top:6em;position:relative;height:15em;">
+            <div class="col text-center" style="height:100%">
+              <div style="height:100%" id="graph-1"></div>
+              <p>Offenders by Race</p>
+            </div>
+            <div class="col-sm-1">
+            </div>
+            <div class="col text-center" style="height:100%">
+              <div style="height:100%" id="graph-2"></div>
+              <p>Avg. Victims by Offenders Race</p>
+            </div>
+          </div>
+        </div>
 
         <!-- Page 5 -->
-        <div class="container" style="top:80em;position:relative;">
+        <div class="container" style="top:97em;position:relative;">
             <div class="row">
               <div class="col-sm-1">
               </div>
               <div class="col-sm-9">
                 <p style="text-align:justify;font-size:22px;">
-                  <!-- map -->
+                  does county matter ?
                 </p>
               </div>
-              <div class="col-sm-1">
+              <div class"text-center"  class="col-sm-2" style="top:12em;left:4em;z-index:10;">
+                <div id="legend">
+                  <span id="legend-title-info"> <i class="fas fa-info-circle"></i></span>
+                  <div class="legend-item">
+                    <div class="legend-swatch" style="background:rgb(247,251,255)"></div>
+                    <div class="legend-value"> 0 </div>
+                  </div>
+                  <div class="legend-item">
+                    <div class="legend-swatch" style="background:rgb(222,235,247)"></div>
+                    <div class="legend-value"> 1 - 5 </div>
+                  </div>
+                  <div class="legend-item">
+                    <div class="legend-swatch" style="background:rgb(198,219,239)"></div>
+                    <div class="legend-value"> 6 - 10 </div>
+                  </div>
+                  <div class="legend-item">
+                    <div class="legend-swatch" style="background:rgb(158,202,225)"></div>
+                    <div class="legend-value"> 11 - 20 </div>
+                  </div>
+                  <div class="legend-item">
+                    <div class="legend-swatch" style="background:rgb(107,174,214)"></div>
+                    <div class="legend-value"> 21 - 25 </div>
+                  </div>
+                  <div class="legend-item">
+                    <div class="legend-swatch" style="background:rgb(66,146,198)"></div>
+                    <div class="legend-value"> 26 - 40 </div>
+                  </div>
+                  <div class="legend-item">
+                    <div class="legend-swatch" style="background:rgb(33,113,181)"></div>
+                    <div class="legend-value"> 41 - 50 </div>
+                  </div>
+                  <div class="legend-item">
+                    <div class="legend-swatch" style="background:rgb(8,81,156)"></div>
+                    <div class="legend-value"> 51 - 60 </div>
+                  </div>
+                  <div class="legend-item">
+                    <div class="legend-swatch" style="background:rgb(8,48,107)"></div>
+                    <div class="legend-value"> > 60 </div>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -142,6 +199,7 @@
               <div id="map-container">
               </div>
             </div>
+            
           </div>
         
 
@@ -158,6 +216,30 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <!-- jQuery Code -->
+
+    <!-- Legend Tooltip -->
+    <script>
+      var legendtip = d3.select("body")
+        .append("div") 
+        .attr("class", "legendtip") 
+
+      var legend_info = d3.select("#legend-title-info")
+        .on("mouseover", function(){
+          console.log('mouse over')
+          legendtip.transition()
+            .duration(200)
+            .style("opacity", .9)
+            legendtip.html("<div> Number of offenders convicted in that county </div>" )
+            .style("left", (d3.event.pageX) + "px")
+            .style("top", (d3.event.pageY - 50) + "px")
+        })
+        .on('mouseout', function(d){
+          legendtip.transition()
+          .duration(500)
+          .style("opacity", 0)
+        })
+    </script>
+    <!-- Number count-up -->
     <script>
       var isPassed = 0;
       $(window).scroll(function() {
@@ -189,6 +271,7 @@
     </script>
     <!-- D3 Code -->
     <script src="/javascripts/map.js"></script>
+    <script src="/javascripts/relations.js"></script>
   </body>
 
 </html>
