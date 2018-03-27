@@ -80,6 +80,9 @@ article{
   font-size:65px;
 }
 
+
+/* Map CSS */
+
 #map-container {
   text-align: center!important;
   width: 960px;
@@ -93,9 +96,8 @@ article{
 }
 
 .states :hover {
-  fill: #55d3b4e1!important;  
+  fill: #847f87!important;  
   /* fill: red; */
-
 
 }
 
@@ -181,10 +183,49 @@ div.infotip {
   pointer-events: none;
 }
 
+div.heatmaptip {
+  position: absolute;
+  text-align: center;
+  color: white;
+  background: rgba(0,0,0,0.6);
+  width: 50px;
+  height: 40px;
+  padding: 2px;
+  font-size: 14px;
+  opacity: 1;
+  border: 0px;
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+/* Bar Chart CSS */
 .axis--x path {
   display: none;
 }
 
 .bars:hover{
   opacity: 0.6;
+}
+
+/* Heatmap CSS */
+.heatmap-rect.bordered {
+  stroke: #E6E6E6;
+  stroke-width:2px;
+}
+
+.heatmap-rect:hover{
+  opacity: 0.7;
+}
+
+.heatmap-text.mono {
+  font-size: 9pt;
+  fill: #aaa;
+}
+
+.heatmap-text.axis-workweek {
+  fill: #000;
+}
+
+.heatmap-text.axis-worktime {
+  fill: #000;
 }

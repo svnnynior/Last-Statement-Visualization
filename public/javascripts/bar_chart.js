@@ -13,7 +13,7 @@ function ready(error, data) {
       avg_num_victim: d3.mean(v, function(d) { return parseInt(d.NumberVictim) })
     } })
     .entries(data)
-  
+
   drawGraph1(offenders_sum)
   drawGraph2(offenders_sum)
   drawGraph3(data)
@@ -22,6 +22,11 @@ function ready(error, data) {
 
 // Number of Victim Group by Offender Race
 function drawGraph1(offenders_sum){
+    
+  var races = offenders_sum.map(d => d.key)
+  var color = d3.scaleOrdinal()
+    .domain(races)
+    .range(["#ead8d0", "#f7e4dd", "#dec0bb", "#847f87"])
 
   var svg_graph1 = d3.select("#graph-1").append("svg")
   
@@ -62,6 +67,7 @@ function drawGraph1(offenders_sum){
       .attr("class", "bars")
       .attr("x", function (d) { return x(d.key) })
       .attr("y", function (d) { return y(d.value.count) })
+      .style("fill", function(d){ return color(d.key)})
       .attr("width", x.bandwidth())
       .attr("height", function (d) { return height - y(d.value.count) })
 
@@ -69,11 +75,10 @@ function drawGraph1(offenders_sum){
     var texts = g_bar_text.selectAll("text").data(offenders_sum)
     // ENTER
     texts.enter().append("text")
-      .attr("x", function (d) { return x(d.key) + 30})
+      .attr("x", function (d) { return x(d.key) + 20})
       .attr("y", function (d) { return y(d.value.count) - 5 })
       .style("margin-bottom", "10")
       .text(function(d){return d.value.count})
-      console.log(texts)
 
     }
 
@@ -81,6 +86,11 @@ function drawGraph1(offenders_sum){
 
 // Number of Offender Group by Offender Race
 function drawGraph2(offenders_sum){
+
+  var races = offenders_sum.map(d => d.key)
+  var color = d3.scaleOrdinal()
+    .domain(races)
+    .range(["#ead8d0", "#f7e4dd", "#dec0bb", "#847f87"])
 
   var svg_graph2 = d3.select("#graph-2").append("svg")
   
@@ -117,20 +127,18 @@ function drawGraph2(offenders_sum){
     var g_bar_text = g_graph2.append("g")
 
     var bars = g_bar_text.selectAll("rect").data(offenders_sum)
-
-    // ENTER
     bars.enter().append("rect")
       .attr("class", "bars")
       .attr("x", function (d) { return x(d.key) })
       .attr("y", function (d) { return y(Number((d.value.avg_num_victim).toFixed(2))) })
+      .style("fill", function(d){ return color(d.key)})
       .attr("width", x.bandwidth())
       .attr("height", function (d) { return height - y(Number((d.value.avg_num_victim).toFixed(2))) })
 
 
     var texts = g_bar_text.selectAll("text").data(offenders_sum)
-    // ENTER
     texts.enter().append("text")
-      .attr("x", function (d) { return x(d.key) + 30})
+      .attr("x", function (d) { return x(d.key) + 20})
       .attr("y", function (d) { return y(Number((d.value.avg_num_victim).toFixed(2))) - 5 })
       .style("margin-bottom", "10")
       .text(function(d){return Number((d.value.avg_num_victim).toFixed(2))})

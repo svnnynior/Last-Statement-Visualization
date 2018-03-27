@@ -126,22 +126,37 @@
             </div>
           </div>
         </div>
+        <!-- Bar Charts -->
         <div class="container" style="top:80em;position:relative;">
           <div class="row justify-content-md-center" style="top:6em;position:relative;height:15em;">
-            <div class="col text-center" style="height:100%">
+            <div class="col-sm-4 text-center" style="height:100%">
               <div style="height:100%" id="graph-1"></div>
               <p>Offenders by Race</p>
             </div>
-            <div class="col-sm-1">
-            </div>
-            <div class="col text-center" style="height:100%">
+            <!-- <div class="col-sm-1">
+            </div> -->
+            <div class="col-sm-4 text-center" style="height:100%">
               <div style="height:100%" id="graph-2"></div>
               <p>Avg. Victims by Offenders Race</p>
             </div>
+            <div class="col-sm-4 text-center" style="height:100%">
+              <div id="race-heatmap" style="height:100%"></div>
+              <p>Offenders Race and Avg. Victims by Race</p>
+            </div>
+          </div>
+        </div>
+        <!-- Heatmap -->
+        <div class="container" style="top:90em;position:relative;">
+          <div class="row justify-content-md-center" style="top:6em;position:relative;height:30em;">
+            <!-- <div class="col text-center" style="height:100%">
+              <div id="race-heatmap">
+              </div>
+            </div> -->
           </div>
         </div>
 
         <!-- Page 5 -->
+        <!-- Map -->
         <div class="container" style="top:97em;position:relative;">
             <div class="row">
               <div class="col-sm-1">
@@ -155,39 +170,39 @@
                 <div id="legend">
                   <span id="legend-title-info"> <i class="fas fa-info-circle"></i></span>
                   <div class="legend-item">
-                    <div class="legend-swatch" style="background:rgb(247,251,255)"></div>
+                    <div class="legend-swatch" style="background:rgb(255,247,240)"></div>
                     <div class="legend-value"> 0 </div>
                   </div>
                   <div class="legend-item">
-                    <div class="legend-swatch" style="background:rgb(222,235,247)"></div>
+                    <div class="legend-swatch" style="background:rgb(247,228,221)"></div>
                     <div class="legend-value"> 1 - 5 </div>
                   </div>
                   <div class="legend-item">
-                    <div class="legend-swatch" style="background:rgb(198,219,239)"></div>
+                    <div class="legend-swatch" style="background:rgb(239,219,208)"></div>
                     <div class="legend-value"> 6 - 10 </div>
                   </div>
                   <div class="legend-item">
-                    <div class="legend-swatch" style="background:rgb(158,202,225)"></div>
+                    <div class="legend-swatch" style="background:rgb(225,202,190)"></div>
                     <div class="legend-value"> 11 - 20 </div>
                   </div>
                   <div class="legend-item">
-                    <div class="legend-swatch" style="background:rgb(107,174,214)"></div>
+                    <div class="legend-swatch" style="background:rgb(214,189,157)"></div>
                     <div class="legend-value"> 21 - 25 </div>
                   </div>
                   <div class="legend-item">
-                    <div class="legend-swatch" style="background:rgb(66,146,198)"></div>
+                    <div class="legend-swatch" style="background:rgb(198,146,129)"></div>
                     <div class="legend-value"> 26 - 40 </div>
                   </div>
                   <div class="legend-item">
-                    <div class="legend-swatch" style="background:rgb(33,113,181)"></div>
+                    <div class="legend-swatch" style="background:rgb(181,133,103)"></div>
                     <div class="legend-value"> 41 - 50 </div>
                   </div>
                   <div class="legend-item">
-                    <div class="legend-swatch" style="background:rgb(8,81,156)"></div>
+                    <div class="legend-swatch" style="background:rgb(156,101,58)"></div>
                     <div class="legend-value"> 51 - 60 </div>
                   </div>
                   <div class="legend-item">
-                    <div class="legend-swatch" style="background:rgb(8,48,107)"></div>
+                    <div class="legend-swatch" style="background:rgb(107,68,28)"></div>
                     <div class="legend-value"> > 60 </div>
                   </div>
                 </div>
@@ -225,7 +240,6 @@
 
       var legend_info = d3.select("#legend-title-info")
         .on("mouseover", function(){
-          console.log('mouse over')
           legendtip.transition()
             .duration(200)
             .style("opacity", .9)
@@ -271,7 +285,8 @@
     </script>
     <!-- D3 Code -->
     <script src="/javascripts/map.js"></script>
-    <script src="/javascripts/relations.js"></script>
+    <script src="/javascripts/bar_chart.js"></script>
+    <script src="/javascripts/heatmap.js"></script>
   </body>
 
 </html>
